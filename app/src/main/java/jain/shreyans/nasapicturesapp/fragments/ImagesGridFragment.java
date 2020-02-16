@@ -58,10 +58,12 @@ public class ImagesGridFragment extends Fragment {
                 serviceVersion.setText(imagesViewModel.getServiceVersions().get(position));
                 TextView explanation = overlayView.findViewById(R.id.explanation);
                 explanation.setText(imagesViewModel.getExplanations().get(position));
+                // StfalconImageViewer is a library to implement swipable images with overlay view that contains data about images.
                 final StfalconImageViewer imageViewer =
                         new StfalconImageViewer.Builder<>(getContext(), imagesViewModel.gethDImageUrls(), new ImageLoader<String>() {
                             @Override
                             public void loadImage(final ImageView imageView, String image) {
+                                // Glide is a library to fetch images from server
                                 Glide.with(getContext())
                                         .load(image)
                                         .placeholder(R.drawable.ic_image_place_holder) // image resource as a placeholder before Glide starts loading the image.
