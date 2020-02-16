@@ -8,15 +8,14 @@ import jain.shreyans.nasapicturesapp.repository.ImageRepository;
 
 import android.os.Bundle;
 
+
 public class ImagesActivity extends AppCompatActivity {
 
 
     @Override
     public void onAttachFragment(@NonNull Fragment fragment) {
         super.onAttachFragment(fragment);
-       ImageRepository imageRepository = new ImageRepository(this);
-        imageRepository.loadImageData();
-        ImageRepository.storeInstance(imageRepository);
+
     }
 
     @Override

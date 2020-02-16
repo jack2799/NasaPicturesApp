@@ -1,13 +1,19 @@
 package jain.shreyans.nasapicturesapp.appClass;
 
 import android.app.Application;
-
-import jain.shreyans.nasapicturesapp.repository.ImageRepository;
+import android.content.Context;
 
 public class App extends Application {
+
+    private static Context context;
+
     @Override
     public void onCreate() {
-
+        context = getApplicationContext();
         super.onCreate();
+    }
+
+    public static Context getAppContext() {
+        return context;
     }
 }

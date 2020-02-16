@@ -9,24 +9,23 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import jain.shreyans.nasapicturesapp.R;
 
 public class ImageGridAdapter extends BaseAdapter {
-    private Context mContext;
-    private List<String> mImageUrls ;
+    private Context context;
+    private List<String> imageUrls;
 
     public ImageGridAdapter(Context context, List<String> imageUrls){
-         mContext = context;
-         mImageUrls = imageUrls;
+         this.context = context;
+         this.imageUrls = imageUrls;
 
     }
 
     @Override
     public int getCount() {
-        return mImageUrls.size();
+        return imageUrls.size();
     }
 
     @Override
@@ -44,8 +43,8 @@ public class ImageGridAdapter extends BaseAdapter {
         ImageView imageView;
 
         if (convertView == null) {
-            imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(400, 400));
+            imageView = new ImageView(context);
+            imageView.setLayoutParams(new GridView.LayoutParams(300, 300));
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
            imageView.setPadding(8, 8, 8, 8);
         }
@@ -53,8 +52,9 @@ public class ImageGridAdapter extends BaseAdapter {
         {
             imageView = (ImageView) convertView;
         }
-        Glide.with(mContext)
-                .load(mImageUrls.get(i))
+        Glide.with(context)
+                .load(imageUrls.get(i))
+                .dontAnimate()
                 .placeholder(R.drawable.ic_image_place_holder) // image resource as a placeholder before Glide starts loading the image.
                 .error(R.drawable.ic_broken_image) // image resource as an error placeholder when Glide is unable to load the image.
                 .fallback(R.drawable.ic_no_image) // fallback image resource when the url can be null
